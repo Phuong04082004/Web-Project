@@ -39,7 +39,7 @@
 
 1. Clone repository về máy của bạn:
    ```bash
-   git clone https://github.com/hieu26122004/laravel.git
+   git clone https://github.com/Phuong04082004/Web-Project
    ```
 
 2. Cài đặt các dependencies của Laravel bằng Composer:
