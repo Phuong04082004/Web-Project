@@ -1,13 +1,13 @@
 # MẠNG XÃ HỘI - PHP-LARAVEL
 
-- **Source code** : https://github.com/hieu26122004/laravel
+- **Source code** : https://github.com/Phuong04082004/Web-Project
 - **Link demo** : http:localhost:8000
 - **Link web public** :
 
 ## Thành viên
 | Mã Sinh Viên      | Họ và Tên           |
 | ----------------- | ------------------- |
-| 22010160          |   Nguyễn Huy Hiếu   |
+| 22010243          |   Phạm Minh PhươngPhương   |
 
 ## Giới thiệu
 Ứng dụng mạng xã hội được xây dựng nhằm mục đích cung cấp một nền tảng trực tuyến cho phép người dùng kết nối, chia sẻ thông tin và tương tác với nhau một cách hiệu quả
