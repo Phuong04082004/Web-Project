@@ -7,7 +7,7 @@
 ## Thành viên
 | Mã Sinh Viên      | Họ và Tên           |
 | ----------------- | ------------------- |
-| 22010243          |   Phạm Minh PhươngPhương   |
+| 22010243          |   Phạm Minh Phương   |
 
 ## Giới thiệu
 Ứng dụng mạng xã hội được xây dựng nhằm mục đích cung cấp một nền tảng trực tuyến cho phép người dùng kết nối, chia sẻ thông tin và tương tác với nhau một cách hiệu quả
