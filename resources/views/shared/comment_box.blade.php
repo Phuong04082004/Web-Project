@@ -1,46 +1,55 @@
-<form action="{{ url('/idea/'.$idea->id.'/comment') }}" method="POST">
+<!-- Comment Form -->
+<form action="{{ url('/idea/' . $idea->id . '/comment') }}" method="POST" class="space-y-4 mb-6">
     @csrf
-
     <!-- Comment Input -->
-    <div class="mb-3">
+    <div>
         <textarea
-            class="fs-6 form-control"
+            class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             name="content"
-            rows="1"
+            rows="2"
             placeholder="Write a comment..."
             required
         ></textarea>
     </div>
+
     <div>
-        <button type="submit" class="btn btn-primary btn-sm">
+        <button
+            type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm font-medium"
+        >
             Post Comment
         </button>
     </div>
-
-    <hr />
-    @if($idea->comments->isEmpty())
-    <p>No comments yet.</p>
-    @endif
-    <!-- Single Comment -->
-    @foreach ($idea->comments as $comment)
-    <div class="d-flex align-items-start">
-        <img
-            style="width: 35px"
-            class="me-2 avatar-sm rounded-circle"
-            src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Luigi"
-            alt="Luigi Avatar"
-        />
-        <div class="w-100">
-            <div class="d-flex justify-content-between">
-                <h6 class="mb-0">fhaoh</h6>
-                <small class="fs-6 fw-light text-muted">
-                    {{ $comment->created_at }}
-                </small>
-            </div>
-            <p class="fs-6 mt-3 fw-light">
-                {{ $comment->content }}
-            </p>
-        </div>
-    </div>
-    @endforeach
 </form>
+
+<hr class="border-t border-gray-200 mb-4" />
+
+<!-- Comments List -->
+<div class="space-y-4">
+    @if ($idea->comments->isEmpty())
+        <p class="text-sm text-gray-500 italic">No comments yet.</p>
+    @else
+        @foreach ($idea->comments as $comment)
+            <div class="flex items-start space-x-3">
+                <img
+                    class="w-9 h-9 rounded-full"
+                    src="{{ $comment->user->avatar_url ?? 'https://api.dicebear.com/6.x/fun-emoji/svg?seed=User' }}"
+                    alt="{{ $comment->user->name ?? 'User' }} Avatar"
+                />
+                <div class="bg-gray-100 p-4 rounded-xl w-full">
+                    <div class="flex justify-between items-center">
+                        <h6 class="text-sm font-semibold text-gray-800">
+                            {{ $comment->user->name ?? 'Anonymous' }}
+                        </h6>
+                        <span class="text-xs text-gray-500">
+                            {{ $comment->created_at->diffForHumans() }}
+                        </span>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700">
+                        {{ $comment->content }}
+                    </p>
+                </div>
+            </div>
+        @endforeach
+    @endif
+</div>

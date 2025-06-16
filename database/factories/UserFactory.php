@@ -23,12 +23,23 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->name();
+
+        // Ưu tiên dùng giá trị nếu đã được truyền từ create([...])
+        if (isset($this->attributes['name'])) {
+            $name = $this->attributes['name'];
+        }
+
+        $nickname = $this->generateUniqueNickname($name);
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $name,
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'avatar' => 'default-avatar.png',
+            'nickname' => $nickname,
         ];
     }
 
@@ -41,4 +52,21 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+    private function generateUniqueNickname(string $name): string
+    {
+        $baseNickname = $this->toCamelCase($name);
+        $nickname = $baseNickname;
+        $i = 1;
+        while (\App\Models\User::where('nickname', $nickname)->exists()) {
+            $nickname = $baseNickname . rand(1, 9999);
+        }
+
+        return $nickname;
+    }
+
+    private function toCamelCase(string $string): string
+    {
+        return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $string))));
+    }
+
 }
