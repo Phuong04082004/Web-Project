@@ -32,10 +32,7 @@ Route::get("/login", [Auth::class, "login"])->name('login');
 
 Route::post("/login", [Auth::class, "authenticate"]);
 
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/');
-})->name('logout');
+Route::post('/logout', [Auth::class, 'logout'])->name('logout');
 
 Route::get('/profile', [ProfileController::class, 'edit'])->middleware('auth')->name('profile.edit');
 

@@ -52,8 +52,7 @@ class Auth extends Controller
     }
     public function logout(Request $request)
     {
-        Auth::logout();
-
+        Authenticate::logout();
         $request->session()->invalidate();         // Xóa session hiện tại
         $request->session()->regenerateToken();    // Tạo CSRF token mới
 

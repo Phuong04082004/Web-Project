@@ -17,8 +17,8 @@
 - **Đăng nhập**: Người dùng có thể đăng nhập vào hệ thống.
 - **Đăng ký**: Người dùng có thể tạo tài khoản mới.
 - **Đăng xuất**: Người dùng có thể đăng xuất khỏi hệ thống.
-- **CRUD bài viết**: Người dùng có thể tạo, đọc, cập nhật, và xóa bài viết.
-- **Tìm kiếm bài viết**: Người dùng có thể tìm kiếm bài viết thông qua từ khóa.
+- **CRUD bài viết**: Người dùng có thể tạo, đọc, cập nhật, và xóa, bình luận và tương tác với các bài viết.
+- **Tìm kiếm bài viết**: Người dùng có thể tìm kiếm bài viết thông qua từ khóa, hastag.
 - **Phân trang**: Hỗ trợ phân trang để hiển thị bài viết trong các trang khác nhau.
 
 ## Công nghệ sử dụng
@@ -79,7 +79,7 @@ php artisan serve
 ## Luồng hoạt động
 
 ### Đăng ký (Register)
-- Người dùng gửi yêu cầu đăng ký với thông tin như tên, email, mật khẩu.
+- Người dùng gửi yêu cầu đăng ký với thông tin như tên, email, mật khẩu và lựa chọn avatar.
 - Hệ thống kiểm tra thông tin hợp lệ và email đã tồn tại hay chưa.
 - Nếu hợp lệ, tạo tài khoản mới và trả về thông báo thành công.
 - Nếu thất bại, trả về lỗi phù hợp.
@@ -95,10 +95,10 @@ php artisan serve
 - Hệ thống hủy phiên làm việc và chuyển hướng về trang đăng nhập.
 
 ### CRUD Bài viết
-- **Tạo bài viết**: Người dùng gửi nội dung bài viết. Hệ thống lưu và trả về bài viết vừa tạo.
+- **Tạo bài viết**: Người dùng gửi nội dung bài viết bao gồm văn bản và các file media đi kèm. Hệ thống kiểm tra, lưu và trả về bài viết vừa tạo.
 - **Đọc bài viết**: Người dùng gửi yêu cầu lấy danh sách bài viết hoặc chi tiết bài viết theo ID.
-- **Cập nhật bài viết**: Người dùng gửi yêu cầu cập nhật với thông tin mới của bài viết.
-- **Xóa bài viết**: Người dùng gửi yêu cầu xóa bài viết theo ID.
+- **Cập nhật bài viết**: Người dùng gửi yêu cầu cập nhật với thông tin mới của bài viết, hệ thống kiểm tra quyền của người dùng và thực thi..
+- **Xóa bài viết**: Người dùng gửi yêu cầu xóa bài viết theo ID, hệ thống kiểm tra quyền của người dùng và thực thi.
 
 ### Tìm kiếm bài viết
 - Người dùng gửi từ khóa tìm kiếm.
